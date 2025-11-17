@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Skill Shop - Training Proposal for Aditya Group of Colleges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-brand h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                width: 250px;
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 0 8px 8px;
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+                opacity: 1;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a:hover {
+                background: var(--bg-light);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .college-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* USP Section */
+        .usp-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .usp-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .usp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .usp-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .usp-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .usp-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .program-card.featured {
+            border: 3px solid var(--accent-color);
+            background: linear-gradient(to bottom, #fffbeb 0%, white 100%);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .program-title-section {
+            flex-grow: 1;
+        }
+
+        .program-title-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .program-duration {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .program-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .program-price span {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .program-brief {
+            margin: 1rem 0;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .expand-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .expand-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .program-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.3s;
+            opacity: 0;
+            margin-top: 1rem;
+        }
+
+        .program-details.active {
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .program-details h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .program-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .program-details ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .program-details ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .program-details p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: var(--shadow-md);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-duration {
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .flexibility-note {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: #eff6ff;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .flexibility-note h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .flexibility-note p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .flexibility-note ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .flexibility-note ul li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .flexibility-note ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .cta-box h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .or-text {
+            margin: 1.5rem 0;
+            opacity: 0.8;
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .college-name {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-marker {
+                width: 40px;
+                height: 40px;
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar,
+            .cta-button,
+            .expand-btn,
+            .cta-button-large,
+            .cta-button-secondary {
+                display: none;
+            }
+
+            .program-details {
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+
+            body {
+                font-size: 12pt;
+            }
+
+            .section-title {
+                page-break-after: avoid;
+            }
+
+            .program-card,
+            .timeline-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>The Skill Shop</h2>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#programs">Programs</a>
+                <a href="#timeline">Approach</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Empowering Future Tech Leaders</h1>
+                <p class="hero-subtitle">A Comprehensive Skill Development Partnership for</p>
+                <h2 class="college-name">Aditya Group of Colleges</h2>
+                <p class="hero-description">
+                    Industry-aligned training programs with live project implementation that bridges the gap between academic learning and real-world industry demands.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Programs</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>400+</h3>
+                        <p>Training Hours</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Practical Focus</p>
+                    </div>
+                </div>
+                <a href="#programs" class="cta-button">Explore Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section">
+        <div class="container">
+            <h2 class="section-title">Why Partner With The Skill Shop?</h2>
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <div class="usp-icon">🚀</div>
+                    <h3>Live Project Implementation</h3>
+                    <p>Students work on real-world projects that simulate actual industry scenarios, building portfolio-ready work.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon">🎯</div>
+                    <h3>Industry-Aligned Curriculum</h3>
+                    <p>Our programs are designed based on current industry requirements and emerging technology trends.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon">👨‍💻</div>
+                    <h3>Expert Trainers</h3>
+                    <p>Learn from professionals with hands-on industry experience in their respective domains.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon">📊</div>
+                    <h3>Comprehensive Assessment</h3>
+                    <p>Regular evaluations and project reviews to track student progress and ensure learning outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <h2 class="section-title">Our Training Programs</h2>
+            <p class="section-subtitle">Comprehensive skill development programs tailored for campus recruitment success</p>
+            
+            <div class="programs-grid">
+                <!-- Program 1: HTML/CSS -->
+                <div class="program-card" data-program="html-css">
+                    <div class="program-header">
+                        <div class="program-icon">🎨</div>
+                        <div class="program-title-section">
+                            <h3>HTML/CSS</h3>
+                            <p class="program-duration">24 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Master the fundamentals of web development and create stunning, responsive websites.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>HTML5 semantic elements and structure</li>
+                            <li>CSS3 styling, animations, and transitions</li>
+                            <li>Responsive design and Flexbox/Grid layouts</li>
+                            <li>Modern web design principles</li>
+                            <li>Cross-browser compatibility</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Personal portfolio website</li>
+                            <li>Responsive landing page for a business</li>
+                            <li>Interactive product showcase</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Foundation for all web development roles, essential for front-end developers, UI developers, and full-stack positions.</p>
+                    </div>
+                </div>
+
+                <!-- Program 2: C Bootcamp -->
+                <div class="program-card" data-program="c-bootcamp">
+                    <div class="program-header">
+                        <div class="program-icon">💻</div>
+                        <div class="program-title-section">
+                            <h3>C Bootcamp on Problem Solving</h3>
+                            <p class="program-duration">60 Hours</p>
+                        </div>
+                        <div class="program-price">₹2,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Intensive bootcamp focused on building strong problem-solving skills and DSA fundamentals using C.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Advanced C programming concepts</li>
+                            <li>Data Structures (Arrays, Linked Lists, Stacks, Queues, Trees)</li>
+                            <li>Algorithm design and analysis</li>
+                            <li>Time and space complexity optimization</li>
+                            <li>Problem-solving strategies for coding interviews</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Algorithm visualization tool</li>
+                            <li>Mini-project: File management system</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Critical for cracking technical interviews at product-based companies. Builds foundation for competitive programming and system-level understanding.</p>
+                    </div>
+                </div>
+
+                <!-- Program 3: JavaScript -->
+                <div class="program-card" data-program="javascript">
+                    <div class="program-header">
+                        <div class="program-icon">⚡</div>
+                        <div class="program-title-section">
+                            <h3>JavaScript</h3>
+                            <p class="program-duration">36 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,500<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Learn modern JavaScript and bring interactivity to web applications.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>ES6+ features and modern JavaScript syntax</li>
+                            <li>DOM manipulation and event handling</li>
+                            <li>Asynchronous JavaScript (Promises, Async/Await)</li>
+                            <li>API integration and AJAX</li>
+                            <li>JavaScript design patterns</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Interactive to-do application</li>
+                            <li>Weather dashboard with API integration</li>
+                            <li>E-commerce product filter and cart</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Essential for front-end development, required for React, Angular, Vue.js roles. Foundation for full-stack development.</p>
+                    </div>
+                </div>
+
+                <!-- Program 4: Django -->
+                <div class="program-card" data-program="django">
+                    <div class="program-header">
+                        <div class="program-icon">🐍</div>
+                        <div class="program-title-section">
+                            <h3>Django</h3>
+                            <p class="program-duration">36 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,500<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Build powerful web applications using Python's most popular web framework.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Django architecture and MVT pattern</li>
+                            <li>Models, Views, Templates, and URLs</li>
+                            <li>Django ORM and database management</li>
+                            <li>User authentication and authorization</li>
+                            <li>RESTful API development with Django REST Framework</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Blog platform with admin panel</li>
+                            <li>E-learning management system</li>
+                            <li>REST API for mobile application</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>High demand in startups and enterprises for rapid application development. Used by Instagram, Spotify, and NASA.</p>
+                    </div>
+                </div>
+
+                <!-- Program 5: Gen AI -->
+                <div class="program-card" data-program="gen-ai">
+                    <div class="program-header">
+                        <div class="program-icon">🤖</div>
+                        <div class="program-title-section">
+                            <h3>Generative AI</h3>
+                            <p class="program-duration">24 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Explore cutting-edge AI technologies and build intelligent applications.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Introduction to Large Language Models (LLMs)</li>
+                            <li>Prompt engineering techniques</li>
+                            <li>Working with OpenAI API, Claude API, and other AI services</li>
+                            <li>Building AI-powered applications</li>
+                            <li>Ethical considerations in AI development</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>AI chatbot with custom knowledge base</li>
+                            <li>Content generation tool</li>
+                            <li>AI-powered resume analyzer</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Fastest-growing field in tech. Essential for future-ready developers. High demand across all industries for AI integration.</p>
+                    </div>
+                </div>
+
+                <!-- Program 6: Cybersecurity -->
+                <div class="program-card" data-program="cybersecurity">
+                    <div class="program-header">
+                        <div class="program-icon">🔒</div>
+                        <div class="program-title-section">
+                            <h3>Cybersecurity</h3>
+                            <p class="program-duration">24 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Learn to protect systems and data from cyber threats and vulnerabilities.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Fundamentals of information security</li>
+                            <li>Common vulnerabilities and exploits (OWASP Top 10)</li>
+                            <li>Network security and encryption</li>
+                            <li>Web application security testing</li>
+                            <li>Security best practices and compliance</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Vulnerability assessment of web applications</li>
+                            <li>Password strength analyzer</li>
+                            <li>Security audit report for a sample system</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Critical skill with severe talent shortage. Required across all industries. Growing demand for security-aware developers.</p>
+                    </div>
+                </div>
+
+                <!-- Program 7: Flutter -->
+                <div class="program-card" data-program="flutter">
+                    <div class="program-header">
+                        <div class="program-icon">📱</div>
+                        <div class="program-title-section">
+                            <h3>Flutter</h3>
+                            <p class="program-duration">60 Hours</p>
+                        </div>
+                        <div class="program-price">₹2,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Build beautiful, cross-platform mobile applications for iOS and Android.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Dart programming language fundamentals</li>
+                            <li>Flutter widgets and UI development</li>
+                            <li>State management (Provider, Bloc)</li>
+                            <li>API integration and data persistence</li>
+                            <li>Publishing apps to Play Store and App Store</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>E-commerce mobile app</li>
+                            <li>Social media feed application</li>
+                            <li>Expense tracker with cloud sync</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Google's preferred framework for mobile development. Single codebase for multiple platforms reduces development costs significantly.</p>
+                    </div>
+                </div>
+
+                <!-- Program 8: Full Stack -->
+                <div class="program-card featured" data-program="full-stack">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="program-header">
+                        <div class="program-icon">🎯</div>
+                        <div class="program-title-section">
+                            <h3>Full Stack Development</h3>
+                            <p class="program-duration">120 Hours</p>
+                        </div>
+                        <div class="program-price">₹4,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Comprehensive training in MERN Stack / Java Full Stack / Python Full Stack development.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li><strong>MERN Stack:</strong> MongoDB, Express.js, React, Node.js</li>
+                            <li><strong>Java Full Stack:</strong> Spring Boot, Hibernate, React/Angular, MySQL</li>
+                            <li><strong>Python Full Stack:</strong> Django/Flask, React, PostgreSQL</li>
+                            <li>Complete SDLC from design to deployment</li>
+                            <li>RESTful API design and implementation</li>
+                            <li>Database design and optimization</li>
+                            <li>Authentication, authorization, and security</li>
+                            <li>Cloud deployment (AWS/Heroku/Vercel)</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Full-featured social media platform</li>
+                            <li>E-commerce website with payment integration</li>
+                            <li>Project management tool (like Trello)</li>
+                            <li>Real-time chat application</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Highest demand in the job market. Full-stack developers are versatile and can handle complete project lifecycles. Directly applicable to startup and enterprise environments.</p>
+                    </div>
+                </div>
+
+                <!-- Program 9: Data Analytics -->
+                <div class="program-card" data-program="data-analytics">
+                    <div class="program-header">
+                        <div class="program-icon">📊</div>
+                        <div class="program-title-section">
+                            <h3>Data Analytics</h3>
+                            <p class="program-duration">24 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Transform raw data into actionable insights using modern analytics tools.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Data analysis fundamentals and statistics</li>
+                            <li>Python libraries (Pandas, NumPy, Matplotlib)</li>
+                            <li>Data visualization with Tableau/Power BI</li>
+                            <li>SQL for data manipulation</li>
+                            <li>Exploratory data analysis techniques</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Sales data analysis dashboard</li>
+                            <li>Customer segmentation analysis</li>
+                            <li>Trend analysis and forecasting</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Data-driven decision making is critical across all industries. High demand for professionals who can extract insights from data.</p>
+                    </div>
+                </div>
+
+                <!-- Program 10: UI/UX -->
+                <div class="program-card" data-program="ui-ux">
+                    <div class="program-header">
+                        <div class="program-icon">🎨</div>
+                        <div class="program-title-section">
+                            <h3>UI/UX Design</h3>
+                            <p class="program-duration">24 Hours</p>
+                        </div>
+                        <div class="program-price">₹1,000<span>/student</span></div>
+                    </div>
+                    <div class="program-brief">
+                        <p>Design user-centered digital experiences that delight and engage users.</p>
+                    </div>
+                    <button class="expand-btn">View Details</button>
+                    <div class="program-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Design thinking and user research</li>
+                            <li>Wireframing and prototyping</li>
+                            <li>Visual design principles</li>
+                            <li>Figma/Adobe XD for design</li>
+                            <li>Usability testing and iteration</li>
+                        </ul>
+                        <h4>Live Projects:</h4>
+                        <ul>
+                            <li>Mobile app UI design</li>
+                            <li>Website redesign project</li>
+                            <li>Complete design system creation</li>
+                        </ul>
+                        <h4>Industry Relevance:</h4>
+                        <p>Essential for creating successful digital products. UI/UX designers are in high demand as companies prioritize user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Implementation Approach</h2>
+            <p class="section-subtitle">Building industry-ready professionals from day one</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>First Year - Foundation Building</h3>
+                        <p class="timeline-duration">Year 1</p>
+                        <p>Students begin their journey with fundamental programming concepts and problem-solving skills. Introduction to HTML/CSS, C Programming, and basic development practices. This creates a strong technical foundation from the very beginning of their academic career.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Second Year - Core Technologies</h3>
+                        <p class="timeline-duration">Year 2</p>
+                        <p>Building upon the foundation, students dive into JavaScript, Data Structures & Algorithms, and start working on their first live projects. They learn industry-standard development workflows and begin building their technical portfolio.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Third Year - Specialization & Advanced Skills</h3>
+                        <p class="timeline-duration">Year 3</p>
+                        <p>Students choose their specialization tracks - Full Stack Development, Mobile Development (Flutter), Data Analytics, or UI/UX Design. They work on complex, industry-level projects and start contributing to real-world applications. Exposure to emerging technologies like Gen AI and Cybersecurity.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Final Year - Industry Mastery</h3>
+                        <p class="timeline-duration">Year 4</p>
+                        <p>By the final year, students are working on capstone projects that mirror professional development environments. They have portfolio-ready projects, comprehensive understanding of software development lifecycle, and are fully prepared for campus placements and industry roles.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>Industry-Ready Graduates</h3>
+                        <p class="timeline-duration">Graduation</p>
+                        <p>Students graduate as industry-ready professionals with 3-4 years of hands-on project experience, a strong technical portfolio, and deep understanding of modern development practices. They step into the industry not as freshers, but as confident, skilled developers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flexibility-note">
+                <h4>🎯 Fully Customizable Programs</h4>
+                <p>Our programs are completely flexible and can be tailored to meet your specific institutional needs:</p>
+                <ul>
+                    <li><strong>Custom Curriculum:</strong> Adapt program content based on student background and industry demands</li>
+                    <li><strong>Flexible Duration:</strong> Programs can be extended or condensed based on academic calendar</li>
+                    <li><strong>Branch-Specific Customization:</strong> Different tracks for CSE, IT, ECE, and other engineering branches</li>
+                    <li><strong>Progressive Learning Path:</strong> Structured progression from basics to advanced concepts across all four years</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Let's Build Future-Ready Engineers Together</h2>
+            <p class="section-subtitle">Get in touch to discuss how we can partner for your students' success</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>📧 Email</h4>
+                        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cec9c1c8e7d3cfc2d4cccecbcbd4cfc8d789cec9">[email&#160;protected]</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>📞 Phone</h4>
+                        <p>+91 9390422283</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🌐 Website</h4>
+                        <p>www.theskillshop.in</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>📍 Location</h4>
+                        <p>Hyderabad, Telangana</p>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Ready to Transform Your Students' Careers?</h3>
+                    <p>Contact us today to discuss implementing our comprehensive skill development programs at Aditya Group of Colleges. Together, we can create industry-ready graduates who are masters of their craft.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 The Skill Shop. All rights reserved.</p>
+            <p>Empowering students with industry-relevant skills through live project implementation.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinkItems = document.querySelectorAll('.nav-links a');
+                navLinkItems.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target);
+                    const isClickOnToggle = menuToggle.contains(event.target);
+                    
+                    if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+
+            // Handle expand/collapse for program cards
+            const expandButtons = document.querySelectorAll('.expand-btn');
+            
+            expandButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const programCard = this.closest('.program-card');
+                    const details = programCard.querySelector('.program-details');
+                    
+                    // Toggle active class
+                    details.classList.toggle('active');
+                    
+                    // Change button text
+                    if (details.classList.contains('active')) {
+                        this.textContent = 'Hide Details';
+                    } else {
+                        this.textContent = 'View Details';
+                    }
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            const allNavLinks = document.querySelectorAll('.nav-links a, .cta-button');
+            
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 80;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe program cards and other elements
+            const animatedElements = document.querySelectorAll('.program-card, .usp-card, .timeline-item');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Highlight navigation on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === '#' + current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
