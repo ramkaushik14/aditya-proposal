@@ -1319,7 +1319,10 @@
             const expandButtons = document.querySelectorAll('.expand-btn');
             
             expandButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
                     const programCard = this.closest('.program-card');
                     const details = programCard.querySelector('.program-details');
                     
